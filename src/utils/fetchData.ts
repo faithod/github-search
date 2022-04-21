@@ -3,7 +3,7 @@ import { IRepository } from "../interfaces/IRepository";
 export function fetchData(
   search: string,
   setState: React.Dispatch<React.SetStateAction<IRepository[]>>,
-  page: number = 1
+  page = 1
 ) {
   if (search) {
     fetch(
