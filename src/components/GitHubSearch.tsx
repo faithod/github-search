@@ -22,8 +22,9 @@ export default function GitHubSearch({
     }
   }, [page]);
   return (
-    <>
+    <div className="container">
       <form
+        className="search-form"
         id="form"
         role="search"
         onSubmit={(e) => {
@@ -31,6 +32,7 @@ export default function GitHubSearch({
         }}
       >
         <input
+          className="input"
           value={searchTerm}
           type="search"
           name="q"
@@ -40,6 +42,7 @@ export default function GitHubSearch({
           }}
         />
         <button
+          className="search-button"
           type="submit"
           onClick={() => fetchData(searchTerm, setRepositories, page)}
         >
@@ -83,6 +86,6 @@ export default function GitHubSearch({
         previous
       </button>
       <button onClick={() => setPage((prev) => prev + 1)}>next</button>
-    </>
+    </div>
   );
 }
