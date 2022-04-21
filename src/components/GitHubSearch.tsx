@@ -16,11 +16,14 @@ export default function GitHubSearch({
   console.log(repositories);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    if (page >= 1) {
-      fetchData(searchTerm, setRepositories, page);
-    }
-  }, [page]);
+  useEffect(
+    () => {
+      if (page >= 1) {
+        fetchData(searchTerm, setRepositories, page);
+      }
+    },
+    /* eslint-disable */ [page]
+  );
   return (
     <div className="container">
       <form
