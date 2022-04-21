@@ -10,8 +10,6 @@ https://faithod-github-search.netlify.app/
 
 ### set-up
 
-git clone git@github.com:faithod/github-search.git
-
 Install dependencies `yarn`
 
 Run locally `yarn start`
