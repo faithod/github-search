@@ -13,10 +13,17 @@ export function fetchData(
         },
       }
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          //throwing error & only allowing response which has status code of 200
+          return res.json();
+        } else {
+          throw Error(res.statusText);
+        }
+      })
       .then((data) => {
         setState(data.items === undefined ? [] : data.items);
-        console.log(data.items);
-      });
+      })
+      .catch((err) => console.log(err)); //only handles network errors, all 4xx, 5xx don’t get into catch block
   }
 }
