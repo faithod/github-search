@@ -20,7 +20,7 @@ export default function GitHubSearch({
     if (page >= 1) {
       fetchData(searchTerm, setRepositories, page);
     }
-  }, [page, searchTerm, setRepositories]);
+  }, [page]);
   return (
     <div className="container">
       <form
