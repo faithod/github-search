@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { IRepository } from "../interfaces/IRepository";
 import { fetchData } from "../utils/fetchData";
 
@@ -13,6 +14,13 @@ export default function GitHubSearch({
   setRepositories: React.Dispatch<React.SetStateAction<IRepository[]>>;
 }) {
   console.log(repositories);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (page >= 1) {
+      fetchData(searchTerm, setRepositories, page);
+    }
+  }, [page]);
   return (
     <>
       <form
@@ -33,7 +41,7 @@ export default function GitHubSearch({
         />
         <button
           type="submit"
-          onClick={() => fetchData(searchTerm, setRepositories)}
+          onClick={() => fetchData(searchTerm, setRepositories, page)}
         >
           Search
         </button>
@@ -61,6 +69,20 @@ export default function GitHubSearch({
       ) : (
         <p>0 results</p>
       )}
+      <button
+        onClick={() =>
+          setPage((prev) => {
+            console.log(prev);
+            if (prev > 1) {
+              return prev - 1;
+            }
+            return prev;
+          })
+        }
+      >
+        previous
+      </button>
+      <button onClick={() => setPage((prev) => prev + 1)}>next</button>
     </>
   );
 }
