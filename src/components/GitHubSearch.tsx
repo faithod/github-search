@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
-import { IRepository } from "../interfaces/IRepository";
+import { GitHubSearchProps } from "../interfaces/GitHubSearchProps";
 import { fetchData } from "../utils/fetchData";
 import { formatName } from "../utils/formatName";
+import NavigationButtons from "./NavigationButtons";
 
 export default function GitHubSearch({
   searchTerm,
   setSearchTerm,
   repositories,
   setRepositories,
-}: {
-  searchTerm: string;
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
-  repositories: IRepository[];
-  setRepositories: React.Dispatch<React.SetStateAction<IRepository[]>>;
-}) {
-  console.log(repositories);
+}: GitHubSearchProps) {
   const [page, setPage] = useState(1);
 
   useEffect(
@@ -50,44 +45,29 @@ export default function GitHubSearch({
         <button type="submit">Search</button>
       </form>
 
-      {repositories.length > 0 ? (
-        <table className="results-table">
-          <thead>
-            <tr>
-              <th>Repository Name</th>
-              <th>Author Name</th>
-              <th>Number of Stars</th>
-            </tr>
-          </thead>
-          <tbody>
-            {repositories.map((repo, i) => (
-              <tr key={i}>
-                <td>{formatName(repo.name)}</td>
-                <td>{repo.owner.login}</td>
-                <td>{repo.stargazers_count}</td>
+      {repositories.length > 0 && (
+        <>
+          <table className="results-table">
+            <thead>
+              <tr>
+                <th>Repository Name</th>
+                <th>Author Name</th>
+                <th>Number of Stars</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>0 results</p>
+            </thead>
+            <tbody>
+              {repositories.map((repo, i) => (
+                <tr key={i}>
+                  <td>{formatName(repo.name)}</td>
+                  <td>{repo.owner.login}</td>
+                  <td>{repo.stargazers_count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <NavigationButtons setPage={setPage} />
+        </>
       )}
-      <div className="buttons">
-        <button
-          onClick={() =>
-            setPage((prev) => {
-              console.log(prev);
-              if (prev > 1) {
-                return prev - 1;
-              }
-              return prev;
-            })
-          }
-        >
-          previous
-        </button>
-        <button onClick={() => setPage((prev) => prev + 1)}>next</button>
-      </div>
     </div>
   );
 }

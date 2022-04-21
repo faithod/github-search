@@ -57,9 +57,9 @@ button {
   display: flex;
   justify-content: flex-end;
 }
-.search-button:hover {
-  background-color: rgba(20, 147, 251, 0.8);
-  border: 1px solid rgba(20, 147, 251, 0.8);
+button:hover {
+  background-color: rgba(6, 122, 218, 0.8);
+  border: 1px solid rgba(6, 122, 218, 0.8);
 }
 
 @media (min-width: 780px) {
