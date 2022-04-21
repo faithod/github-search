@@ -42,9 +42,7 @@ export default function GitHubSearch({
             setSearchTerm(e.target.value);
           }}
         />
-        <button className="search-button" type="submit">
-          Search
-        </button>
+        <button type="submit">Search</button>
       </form>
 
       {repositories.length > 0 ? (
@@ -69,20 +67,22 @@ export default function GitHubSearch({
       ) : (
         <p>0 results</p>
       )}
-      <button
-        onClick={() =>
-          setPage((prev) => {
-            console.log(prev);
-            if (prev > 1) {
-              return prev - 1;
-            }
-            return prev;
-          })
-        }
-      >
-        previous
-      </button>
-      <button onClick={() => setPage((prev) => prev + 1)}>next</button>
+      <div className="buttons">
+        <button
+          onClick={() =>
+            setPage((prev) => {
+              console.log(prev);
+              if (prev > 1) {
+                return prev - 1;
+              }
+              return prev;
+            })
+          }
+        >
+          previous
+        </button>
+        <button onClick={() => setPage((prev) => prev + 1)}>next</button>
+      </div>
     </div>
   );
 }
