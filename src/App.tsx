@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import GitHubSearch from "./components/GitHubSearch";
+import { IRepository } from "./interfaces/IRepository";
 
 function App() {
-  const [repositories, setRepositories] = useState();
+  const [repositories, setRepositories] = useState<IRepository[]>();
   const [searchTerm, setSearchTerm] = useState("tetris");
   useEffect(() => {
     fetch(
@@ -16,7 +17,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setRepositories(data.items);
-        console.log(data.items); //;;;;;;
+        console.log(data.items);
       });
   }, []);
   return (
