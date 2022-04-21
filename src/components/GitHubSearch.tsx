@@ -15,7 +15,13 @@ export default function GitHubSearch({
   console.log(repositories);
   return (
     <>
-      <form id="form" role="search">
+      <form
+        id="form"
+        role="search"
+        onSubmit={(e) => {
+          e.preventDefault(); //to prevent the page from refreshing when you press Enter
+        }}
+      >
         <input
           value={searchTerm}
           type="search"
@@ -23,12 +29,17 @@ export default function GitHubSearch({
           placeholder="Search..."
           onChange={(e) => {
             setSearchTerm(e.target.value);
-            fetchData(searchTerm, setRepositories);
           }}
         />
+        <button
+          type="submit"
+          onClick={() => fetchData(searchTerm, setRepositories)}
+        >
+          Search
+        </button>
       </form>
 
-      {repositories.length > 0 && (
+      {repositories.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -47,6 +58,8 @@ export default function GitHubSearch({
             ))}
           </tbody>
         </table>
+      ) : (
+        <p>0 results</p>
       )}
     </>
   );
