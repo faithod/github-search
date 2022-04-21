@@ -29,6 +29,7 @@ export default function GitHubSearch({
         role="search"
         onSubmit={(e) => {
           e.preventDefault(); //to prevent the page from refreshing when you press Enter
+          fetchData(searchTerm, setRepositories, page);
         }}
       >
         <input
@@ -41,17 +42,13 @@ export default function GitHubSearch({
             setSearchTerm(e.target.value);
           }}
         />
-        <button
-          className="search-button"
-          type="submit"
-          onClick={() => fetchData(searchTerm, setRepositories, page)}
-        >
+        <button className="search-button" type="submit">
           Search
         </button>
       </form>
 
       {repositories.length > 0 ? (
-        <table>
+        <table className="results-table">
           <thead>
             <tr>
               <th>Repository Name</th>
