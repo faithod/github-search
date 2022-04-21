@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IRepository } from "../interfaces/IRepository";
 import { fetchData } from "../utils/fetchData";
+import { formatName } from "../utils/formatName";
 
 export default function GitHubSearch({
   searchTerm,
@@ -24,6 +25,7 @@ export default function GitHubSearch({
     },
     /* eslint-disable */ [page]
   );
+
   return (
     <div className="container">
       <form
@@ -60,7 +62,7 @@ export default function GitHubSearch({
           <tbody>
             {repositories.map((repo, i) => (
               <tr key={i}>
-                <td>{repo.name}</td>
+                <td>{formatName(repo.name)}</td>
                 <td>{repo.owner.login}</td>
                 <td>{repo.stargazers_count}</td>
               </tr>
