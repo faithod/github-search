@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# GitHub Search App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A small GitHub Search App built with React and TypeScript. 
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+https://faithod-github-search.netlify.app/
 
-### `yarn start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### set-up
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Install dependencies `yarn`
 
-### `yarn test`
+Run locally `yarn start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ReactJS
+- Create React App
+- JavaScript
+- TypeScript
+- HTML
+- CSS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Steps took to build the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Created wireframe: https://whimsical.com/github-search-8j6gLdbvt2oWZbn9MHa3Dj & familiarised myself with GitHub api docs
+- Used typescript create react app 
+- set up Continous Integration workflow with formatting, linting and automated tests
+- created all components & deployed app with Netifly
 
-### `yarn eject`
+## Problems 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- eslint error  - I had multiple versions of @typescript-eslint installed & 2 config files (.eslintrc) which made me unable to move on until I fixed this error
+- Frequently failing GET requests with status code 403 forbidden
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Improvements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- need more unit tests
+- need to fix error of randomly failing GET requests / after a failed request the app needs refeshing
+- clicking: next & previous buttons could be faster
+- adding the option to display the readme for each repository
+- styling could be improved
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
