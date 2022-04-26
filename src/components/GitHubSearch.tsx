@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { GitHubSearchProps } from "../interfaces/GitHubSearchProps";
+import { IRepository } from "../interfaces/IRepository";
 import { fetchData } from "../utils/fetchData";
 import { formatName } from "../utils/formatName";
 import NavigationButtons from "./NavigationButtons";
 
-export default function GitHubSearch({
-  searchTerm,
-  setSearchTerm,
-  repositories,
-  setRepositories,
-}: GitHubSearchProps) {
+export default function GitHubSearch() {
+  const [repositories, setRepositories] = useState<IRepository[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
 
   useEffect(
@@ -65,7 +62,7 @@ export default function GitHubSearch({
               ))}
             </tbody>
           </table>
-          <NavigationButtons setPage={setPage} />
+          <NavigationButtons page={page} setPage={setPage} />
         </>
       )}
     </div>
